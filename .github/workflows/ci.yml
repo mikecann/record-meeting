@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check shell syntax
+        run: |
+          for script in *.sh record-meeting; do
+            bash -n "$script"
+          done
+      - name: Test Swift app
+        run: swift test
+      - name: Test Python processor and installer
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v

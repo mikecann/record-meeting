@@ -38,7 +38,7 @@ def executable(name: str) -> str:
     for candidate in executable_candidates(name):
         if candidate.is_file():
             return str(candidate)
-    raise RuntimeError(f"{name} is not installed. Run tools/record-meeting/setup_mac.sh.")
+    raise RuntimeError(f"{name} is not installed. Run bash setup_mac.sh from your Record Meeting clone.")
 
 
 def run(command: list[str]) -> None:
@@ -262,7 +262,7 @@ def process(input_path: Path, output_directory: Path, stem: str, model_name: str
         from faster_whisper import WhisperModel
     except ImportError as error:
         raise RuntimeError(
-            "The transcription environment is missing. Run tools/record-meeting/setup_mac.sh.",
+            "The transcription environment is missing. Run bash setup_mac.sh from your Record Meeting clone.",
         ) from error
 
     output_directory.mkdir(parents=True, exist_ok=True)

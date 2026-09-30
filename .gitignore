@@ -1,0 +1,15 @@
+.build/
+.swiftpm/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+dist/
+build/
+*.app/
+*.log
+.DS_Store
